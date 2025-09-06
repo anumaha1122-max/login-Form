@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="loginForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br>
+
+    <button type="submit">Login</button>
+    <div id="errorMessage" style="color: red;"></div>
+</form>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const errorMessageDiv = document.getElementById('errorMessage');
+    errorMessageDiv.textContent = '';
+
+    if (usernameInput.value.trim() === '') {
+        errorMessageDiv.textContent = 'Username cannot be empty.';
+        return;
+    }
+
+    if (passwordInput.value.trim() === '') {
+        errorMessageDiv.textContent = 'Password cannot be empty.';
+        return;
+    }
+
+    if (usernameInput.value === 'admin' && passwordInput.value === 'password123') {
+        alert('Login successful! User can now be added to the application.');
+    } else {
+        errorMessageDiv.textContent = 'Invalid username or password.';
+    }
+});
+</script>
+</body>
+</html>
